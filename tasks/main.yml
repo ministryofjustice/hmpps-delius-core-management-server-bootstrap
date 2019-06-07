@@ -1,0 +1,13 @@
+---
+# tasks file for hmpps-delius-core-management-server-bootstrap
+
+- name: Set defaults
+  set_fact:
+    training_scripts_dir: "{{ training_scripts_dir | default('/u01/training') }}"
+    app_scripts_dir: "{{ app_scripts_dir | default('/u01/app') }}"
+
+- name: Setup scripts repos
+  include: setup-repos.yml
+
+- name: Generate environment config files
+  include: env-config.yml

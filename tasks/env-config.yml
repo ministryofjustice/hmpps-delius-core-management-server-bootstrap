@@ -1,0 +1,12 @@
+---
+
+- name: Set bash profile
+  temlate:
+    src: training-profile.sh
+    dest: /etc/profile.d/training-profile.sh
+
+
+- name: Generate the training cfg file
+  template:
+    src: DTR.cfg.j2
+    dest: '{{ training_scripts_dir }}/cfg/DTR.cfg'

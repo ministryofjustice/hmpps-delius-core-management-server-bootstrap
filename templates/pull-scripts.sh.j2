@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set +x
+
+[ -z $1 ] && set branch=$1 || set branch=master
+
+cd {{ training_scripts_dir }}
+git checkout -f origin/{{ branch }} {{ branch }}
+git pull
+
+cd {{ app_scripts_dir }}
+git checkout -f origin/{{ branch }} {{ branch }}
+git pull

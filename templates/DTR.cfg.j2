@@ -1,0 +1,60 @@
+#!/bin/ksh
+# |=========================================================================
+# | Training System
+# |=========================================================================
+# |
+# | Filename:  DTR.cfg
+# |
+# | Purpose :  File used to store the configuration parameters for training
+# |
+# |=========================================================================
+#
+# 1
+#### Training database host
+######
+databasehost={{ database_host }}
+
+# 2
+#### Training database SID
+######
+databasesid={{ database_sid }}
+
+# 3
+#### Training database DBA privilege account
+######
+dbauser=system
+dbapw={{ lookup('aws_ssm', '/delius-core-dev/delius-core/oracle-database/db/system_password', region='eu-west-2') }}
+
+# 4
+#### Training database sys privilege account
+######
+sysuser=sys
+dbapw={{ lookup('aws_ssm', '/delius-core-dev/delius-core/oracle-database/db/sys_password', region='eu-west-2') }}
+
+# 5
+#### Training database delius_app_schema account
+######
+dasuser=delius_app_schema
+daspw={{ lookup('aws_ssm', '/delius-core-dev/delius-core/oracle-database/db/delius_app_schema_password', region='eu-west-2') }}
+
+# 6
+#### Training database delius_pool account
+######
+dpooluser=delius_pool
+dpoolpw={{ lookup('aws_ssm', '/delius-core-dev/delius-core/oracle-database/db/delius_pool_password', region='eu-west-2') }}
+
+# 7
+#### Training database LDAP account
+######
+oiduser=uid=admin,ou=system
+oidpw={{ lookup('aws_ssm', '/delius-core-dev/delius-core/apacheds/apacheds/ldap_admin_password', region='eu-west-2') }}
+
+# 8
+#### Training database LDAP host
+######
+oidhost={{ ldap_host }}
+
+# 9
+#### Training database LDAP port
+######
+oidport={{ ldap_port }}
