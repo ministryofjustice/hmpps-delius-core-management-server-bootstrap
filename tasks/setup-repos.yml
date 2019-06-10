@@ -19,16 +19,19 @@
   git:
     repo: '{{ app_scripts_repo }}'
     dest: '{{ app_scripts_dir }}'
+    force: yes
 
 - name: Clone training scripts repo
   git:
     repo: '{{ training_scripts_repo }}'
     dest: '{{ training_scripts_dir }}'
+    force: yes
 
 - name: Give execute access to the dba group
   file:
     path: '{{ item.path }}'
     state: directory
+    recurse: yes
     group: dba
     mode: 0670
   with_items:
