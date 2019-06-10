@@ -1,10 +1,12 @@
 ---
 
-- name: Create scripts directories with read-write access for jenkins user
+- name: Create script directories with execute permissions for the dba group
   file:
     path: '{{ item.path }}'
     state: directory
-    mode: 0600
+    recurse: yes
+    group: dba
+    mode: 0670
   with_items:
     - { path: '{{ training_scripts_dir }}' }
     - { path: '{{ app_scripts_dir }}' }
@@ -16,18 +18,10 @@
     mode: u+x
 
 - name: Clone app scripts repo
+  become: yes
+  become_user: root
+  become_method: su
   shell: 'git clone {{ app_scripts_repo }} {{ app_scripts_dir }}'
 
 - name: Clone training scripts repo
   shell: 'git clone {{ training_scripts_repo }} {{ training_scripts_dir }}'
-
-- name: Give execute access to the dba group
-  file:
-    path: '{{ item.path }}'
-    state: directory
-    recurse: yes
-    group: dba
-    mode: 0670
-  with_items:
-    - { path: '{{ training_scripts_dir }}' }
-    - { path: '{{ app_scripts_dir }}' }
