@@ -5,9 +5,9 @@ set +x
 [ -z $1 ] && set branch=$1 || set branch=master
 
 cd {{ training_scripts_dir }}
-git checkout -f origin/{{ branch }} {{ branch }}
+git checkout -t origin/${branch}
 git pull
 
 cd {{ app_scripts_dir }}
-git checkout -f origin/{{ branch }} {{ branch }}
+git checkout -t origin/${branch}
 git pull

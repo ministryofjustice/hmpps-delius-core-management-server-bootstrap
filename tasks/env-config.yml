@@ -1,8 +1,8 @@
 ---
 
 - name: Set bash profile
-  temlate:
-    src: training-profile.sh
+  template:
+    src: training-profile.sh.j2
     dest: /etc/profile.d/training-profile.sh
 
 
