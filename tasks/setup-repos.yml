@@ -16,16 +16,10 @@
     mode: u+x
 
 - name: Clone app scripts repo
-  git:
-    repo: '{{ app_scripts_repo }}'
-    dest: '{{ app_scripts_dir }}'
-    force: yes
+  shell: 'git clone {{ app_scripts_repo }} {{ app_scripts_dir }}'
 
 - name: Clone training scripts repo
-  git:
-    repo: '{{ training_scripts_repo }}'
-    dest: '{{ training_scripts_dir }}'
-    force: yes
+  shell: 'git clone {{ training_scripts_repo }} {{ training_scripts_dir }}'
 
 - name: Give execute access to the dba group
   file:
