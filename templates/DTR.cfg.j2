@@ -23,31 +23,31 @@ databasesid={{ database_sid }}
 #### Training database DBA privilege account
 ######
 dbauser=system
-dbapw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/delius-database/db/system_password', region='eu-west-2') }}
+dbapw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/delius-database/db/system_password', region='{{ region }}') }}
 
 # 4
 #### Training database sys privilege account
 ######
 sysuser=sys
-dbapw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/delius-database/db/sys_password', region='eu-west-2') }}
+dbapw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/delius-database/db/sys_password', region='{{ region }}') }}
 
 # 5
 #### Training database delius_app_schema account
 ######
 dasuser=delius_app_schema
-daspw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/delius-database/db/delius_app_schema_password', region='eu-west-2') }}
+daspw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/delius-database/db/delius_app_schema_password', region='{{ region }}') }}
 
 # 6
 #### Training database delius_pool account
 ######
 dpooluser=delius_pool
-dpoolpw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/delius-database/db/delius_pool_password', region='eu-west-2') }}
+dpoolpw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/delius-database/db/delius_pool_password', region='{{ region }}') }}
 
 # 7
 #### Training database LDAP account
 ######
 oiduser=uid=admin,ou=system
-oidpw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/apacheds/apacheds/ldap_admin_password', region='eu-west-2') }}
+oidpw={{ lookup('aws_ssm', '/{{ environment_name }}/{{ project_name }}/apacheds/apacheds/ldap_admin_password', region='{{ region }}') }}
 
 # 8
 #### Training database LDAP host
