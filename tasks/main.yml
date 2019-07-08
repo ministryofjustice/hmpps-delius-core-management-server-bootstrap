@@ -21,3 +21,8 @@
   template:
     src: DTR.cfg.j2
     dest: '{{ training_scripts_dir }}/cfg/DTR.cfg'
+
+- name: Generate the app cfg file
+  template:
+    src: APS.cfg.j2
+    dest: '{{ app_scripts_dir }}/cfg/APS.cfg'
