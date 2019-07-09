@@ -1,0 +1,65 @@
+#!/bin/ksh
+# |=========================================================================
+# | nDelius
+# |=========================================================================
+# |
+# | Filename:  APS.cfg
+# |
+# | Purpose :  Config file used in the upkeep scripts
+# |
+# |=========================================================================
+#
+# 1
+#### App database host
+######
+databasehost={{ database_host }}
+
+# 2
+#### App database SID
+######
+databasesid={{ database_sid }}
+
+# 3
+#### App database DBA privilege account
+######
+dbauser=system
+dbapw={{ lookup('aws_ssm', '/'+environment_name+'/'+project_name+'/delius-database/db/system_password', region=region) }}
+
+# 4
+#### App database sys privilege account
+######
+sysuser=sys
+dbapw={{ lookup('aws_ssm', '/'+environment_name+'/'+project_name+'/delius-database/db/sys_password', region=region) }}
+
+# 5
+#### App database delius_app_schema account
+######
+dasuser=delius_app_schema
+daspw={{ lookup('aws_ssm', '/'+environment_name+'/'+project_name+'/delius-database/db/delius_app_schema_password', region=region) }}
+
+# 6
+#### App database delius_pool account
+######
+dpooluser=delius_pool
+dpoolpw={{ lookup('aws_ssm', '/'+environment_name+'/'+project_name+'/delius-database/db/delius_pool_password', region=region) }}
+
+# 7
+#### App scripts account
+apsuser=delius_app_scripts
+apspw={{ lookup('aws_ssm', '/'+environment_name+'/'+project_name+'/delius-database/db/delius_app_scripts_password', region=region) }}
+
+# 8
+#### App database LDAP account
+######
+oiduser=uid=admin,ou=system
+oidpw={{ lookup('aws_ssm', '/'+environment_name+'/'+project_name+'/apacheds/apacheds/ldap_admin_password', region=region) }}
+
+# 9
+#### App database LDAP host
+######
+oidhost={{ ldap_host }}
+
+# 9
+#### App database LDAP port
+######
+oidport={{ ldap_port }}
