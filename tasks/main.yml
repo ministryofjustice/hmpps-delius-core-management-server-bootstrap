@@ -14,7 +14,9 @@
     group: dba
     mode: g+rwxs
   with_items:
+    - { path: '{{ training_scripts_dir }}' }
     - { path: '{{ training_scripts_dir }}/cfg' }
+    - { path: '{{ app_scripts_dir }}' }
     - { path: '{{ app_scripts_dir }}/cfg' }
 
 - name: Generate the training cfg file
